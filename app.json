@@ -1,0 +1,36 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/result/result"
+  ],
+  "subpackages": [
+    {
+      "root": "subpackages/user",
+      "name": "user",
+      "pages": [
+        "pages/center/center"
+      ]
+    },
+    {
+      "root": "subpackages/growth",
+      "name": "growth",
+      "pages": [
+        "pages/invite/invite"
+      ]
+    }
+  ],
+  "preloadRule": {
+    "pages/index/index": {
+      "network": "all",
+      "packages": ["user"]
+    }
+  },
+  "window": {
+    "navigationBarBackgroundColor": "#07C160",
+    "navigationBarTitleText": "健身热量记录",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#F6F6F6"
+  },
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

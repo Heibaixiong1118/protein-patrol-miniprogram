@@ -1,0 +1,102 @@
+<view class="container">
+  <view class="hero">
+    <view class="title">今日热量</view>
+    <view class="subtitle">{{date}} · 增肌减脂，先算清楚</view>
+  </view>
+
+  <!-- 未设置目标时引导设置 -->
+  <view class="card" wx:if="{{!profile}}">
+    <view class="card-title">设置你的目标</view>
+    <view class="form-row">
+      <text class="form-label">体重</text>
+      <input class="form-input" type="digit" placeholder="kg" value="{{weight}}" bindinput="onWeightInput" />
+    </view>
+    <view class="form-row">
+      <text class="form-label">目标</text>
+      <picker range="{{goalLabels}}" value="{{goalIndex}}" bindchange="onGoalChange">
+        <view class="picker-value">{{goalLabels[goalIndex]}} ›</view>
+      </picker>
+    </view>
+    <button class="btn-primary submit" loading="{{submitting}}" bindtap="onSaveProfile">计算并保存目标</button>
+  </view>
+
+  <!-- 今日概览 -->
+  <view class="card" wx:if="{{profile}}">
+    <view class="overview">
+      <view class="overview-item">
+        <view class="overview-num">{{totals.intake}}</view>
+        <view class="overview-label">摄入 / {{profile.targetKcal}}</view>
+      </view>
+      <view class="overview-item">
+        <view class="overview-num burn">{{totals.burn}}</view>
+        <view class="overview-label">运动消耗</view>
+      </view>
+      <view class="overview-item">
+        <view class="overview-num protein">{{totals.protein}}g</view>
+        <view class="overview-label">蛋白质 / {{profile.targetProtein}}g</view>
+      </view>
+    </view>
+    <progress class="progress" percent="{{profile.targetKcal ? totals.intake / profile.targetKcal * 100 : 0}}" stroke-width="6" activeColor="#07C160" backgroundColor="#EBEBEB" />
+    <view class="goal-line">{{profile.goalLabel}}目标 · 体重 {{profile.weight}}kg · 剩余 {{profile.targetKcal - totals.intake + totals.burn}} kcal</view>
+  </view>
+
+  <!-- 快捷记录 -->
+  <view class="card" wx:if="{{profile}}">
+    <view class="card-title">记一餐</view>
+
+    <!-- 云端食物库搜索 -->
+    <view class="search-box">
+      <input class="form-input" placeholder="搜索食物，如：鸡胸" value="{{keyword}}" bindinput="onKeywordInput" />
+    </view>
+    <view class="search-results" wx:if="{{searchResults.length > 0}}">
+      <view class="search-item" wx:for="{{searchResults}}" wx:key="_id" data-index="{{index}}" bindtap="onSelectFood">
+        <text>{{item.name}}</text>
+        <text class="search-kcal">{{item.kcal}} kcal/100g</text>
+      </view>
+    </view>
+
+    <!-- 搜索选中的食物（优先于下方 picker） -->
+    <view class="selected-food" wx:if="{{selectedFood}}">
+      <text>已选：{{selectedFood.name}}（{{selectedFood.kcal}} kcal/100g）</text>
+      <text class="selected-clear" bindtap="onClearSelected">✕</text>
+    </view>
+
+    <view class="form-row" wx:if="{{!selectedFood}}">
+      <picker class="picker-grow" range="{{foodNames}}" value="{{foodIndex}}" bindchange="onFoodChange">
+        <view class="picker-value">{{foodNames[foodIndex]}} ›</view>
+      </picker>
+    </view>
+    <view class="form-row">
+      <input class="form-input grams" type="digit" placeholder="克数" value="{{grams}}" bindinput="onGramsInput" />
+      <button class="btn-mini" size="mini" bindtap="onAddFood" disabled="{{submitting}}">添加</button>
+    </view>
+
+    <view class="card-title second">记运动</view>
+    <view class="form-row">
+      <picker class="picker-grow" range="{{exerciseNames}}" value="{{exerciseIndex}}" bindchange="onExerciseChange">
+        <view class="picker-value">{{exerciseNames[exerciseIndex]}} ›</view>
+      </picker>
+      <button class="btn-mini" size="mini" bindtap="onAddExercise" disabled="{{submitting}}">添加</button>
+    </view>
+  </view>
+
+  <!-- 今日明细 -->
+  <view class="card" wx:if="{{records.length > 0}}">
+    <view class="card-title">今日明细</view>
+    <view class="record" wx:for="{{records}}" wx:key="_id">
+      <view class="record-main">
+        <view class="record-name"><text class="record-tag {{item.type === 'exercise' ? 'tag-burn' : ''}}">{{item.type === 'food' ? '餐' : '练'}}</text> {{item.name}}<text wx:if="{{item.grams}}" class="record-grams"> {{item.grams}}g</text></view>
+        <view class="record-sub" wx:if="{{item.type === 'food'}}">蛋白质 {{item.protein}}g</view>
+      </view>
+      <view class="record-right">
+        <text class="record-kcal {{item.type === 'exercise' ? 'burn' : ''}}">{{item.type === 'exercise' ? '-' : '+'}}{{item.kcal}}</text>
+        <text class="record-del" data-id="{{item._id}}" bindtap="onRemove">删除</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="entries" wx:if="{{profile}}">
+    <view class="entry" bindtap="goAnalysis">今日分析 ›</view>
+    <view class="entry" bindtap="goCenter">近 7 天趋势 ›</view>
+  </view>
+</view>

@@ -1,0 +1,234 @@
+.hero {
+  padding: 32rpx 8rpx;
+}
+
+.title {
+  font-size: 44rpx;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.subtitle {
+  font-size: 26rpx;
+  color: #888888;
+  margin-top: 8rpx;
+}
+
+.card-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  margin-bottom: 20rpx;
+}
+
+.card-title.second {
+  margin-top: 32rpx;
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.form-label {
+  width: 96rpx;
+  color: #666666;
+  font-size: 26rpx;
+}
+
+.form-input {
+  flex: 1;
+  background: #f6f6f6;
+  border-radius: 8rpx;
+  padding: 12rpx 20rpx;
+  font-size: 28rpx;
+}
+
+.form-input.grams {
+  flex: 1;
+  margin-right: 16rpx;
+}
+
+.search-box {
+  margin-bottom: 16rpx;
+}
+
+.search-results {
+  background: #ffffff;
+  border: 1rpx solid #ebebeb;
+  border-radius: 8rpx;
+  margin-bottom: 16rpx;
+  max-height: 400rpx;
+  overflow-y: auto;
+}
+
+.search-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 16rpx 20rpx;
+  font-size: 26rpx;
+  border-bottom: 1rpx solid #f6f6f6;
+}
+
+.search-item:last-child {
+  border-bottom: none;
+}
+
+.search-kcal {
+  color: #888888;
+  font-size: 24rpx;
+}
+
+.selected-food {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #e8f7ef;
+  color: #07c160;
+  border-radius: 8rpx;
+  padding: 12rpx 20rpx;
+  font-size: 26rpx;
+  margin-bottom: 16rpx;
+}
+
+.selected-clear {
+  color: #888888;
+  padding: 0 8rpx;
+}
+
+.picker-grow {
+  flex: 1;
+}
+
+.picker-value {
+  background: #f6f6f6;
+  border-radius: 8rpx;
+  padding: 12rpx 20rpx;
+  font-size: 28rpx;
+  color: #1a1a1a;
+}
+
+.submit {
+  margin-top: 12rpx;
+}
+
+.overview {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  margin-bottom: 24rpx;
+}
+
+.overview-item {
+  flex: 1;
+}
+
+.overview-num {
+  font-size: 40rpx;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.overview-num.burn {
+  color: #fa9d3b;
+}
+
+.overview-num.protein {
+  color: #576b95;
+}
+
+.overview-label {
+  font-size: 22rpx;
+  color: #888888;
+  margin-top: 6rpx;
+}
+
+.progress {
+  border-radius: 6rpx;
+  overflow: hidden;
+}
+
+.goal-line {
+  margin-top: 16rpx;
+  font-size: 24rpx;
+  color: #888888;
+}
+
+.btn-mini {
+  background: #07c160;
+  color: #ffffff;
+}
+
+.record {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.record:last-child {
+  border-bottom: none;
+}
+
+.record-name {
+  font-size: 28rpx;
+}
+
+.record-tag {
+  display: inline-block;
+  font-size: 20rpx;
+  color: #07c160;
+  border: 1rpx solid #07c160;
+  border-radius: 6rpx;
+  padding: 0 8rpx;
+  line-height: 1.4;
+}
+
+.record-tag.tag-burn {
+  color: #fa9d3b;
+  border-color: #fa9d3b;
+}
+
+.record-grams {
+  color: #888888;
+  font-size: 24rpx;
+}
+
+.record-sub {
+  font-size: 22rpx;
+  color: #888888;
+  margin-top: 4rpx;
+}
+
+.record-right {
+  display: flex;
+  align-items: center;
+}
+
+.record-kcal {
+  font-size: 28rpx;
+  font-weight: 600;
+}
+
+.record-kcal.burn {
+  color: #fa9d3b;
+}
+
+.record-del {
+  margin-left: 24rpx;
+  font-size: 24rpx;
+  color: #fa5151;
+}
+
+.entries {
+  display: flex;
+  justify-content: space-around;
+  padding: 16rpx 0 32rpx;
+}
+
+.entry {
+  color: #576b95;
+  font-size: 26rpx;
+  padding: 16rpx;
+}

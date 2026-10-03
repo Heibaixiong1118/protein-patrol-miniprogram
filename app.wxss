@@ -1,0 +1,40 @@
+page {
+  background: #f6f6f6;
+  font-size: 28rpx;
+  color: #1a1a1a;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, sans-serif;
+}
+
+.container {
+  padding: 24rpx;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 16rpx;
+  padding: 32rpx;
+  margin-bottom: 24rpx;
+}
+
+.btn-primary {
+  background: #07c160;
+  color: #ffffff;
+  border-radius: 12rpx;
+  font-size: 30rpx;
+}
+
+.btn-primary::after {
+  border: none;
+}
+
+.btn-share {
+  background: #ffffff;
+  color: #07c160;
+  border-radius: 12rpx;
+  font-size: 30rpx;
+  border: 2rpx solid #07c160;
+}
+
+.btn-share::after {
+  border: none;
+}

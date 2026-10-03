@@ -1,0 +1,29 @@
+<view class="container">
+  <block wx:if="{{loading}}">
+    <view class="empty">加载中…</view>
+  </block>
+
+  <block wx:elif="{{list.length > 0}}">
+    <view class="card day" wx:for="{{list}}" wx:key="date">
+      <view class="day-date">{{item.date}}</view>
+      <view class="day-stats">
+        <view class="stat">
+          <view class="stat-num">{{item.intake}}</view>
+          <view class="stat-label">摄入 kcal</view>
+        </view>
+        <view class="stat">
+          <view class="stat-num burn">{{item.burn}}</view>
+          <view class="stat-label">消耗 kcal</view>
+        </view>
+        <view class="stat">
+          <view class="stat-num protein">{{item.protein}}g</view>
+          <view class="stat-label">蛋白质</view>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <block wx:else>
+    <view class="empty">还没有记录，回首页记一笔吧</view>
+  </block>
+</view>

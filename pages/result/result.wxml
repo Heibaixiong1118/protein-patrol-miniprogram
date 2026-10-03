@@ -1,0 +1,46 @@
+<view class="container">
+  <block wx:if="{{loading}}">
+    <view class="empty">加载中…</view>
+  </block>
+
+  <block wx:elif="{{profile}}">
+    <!-- 热量缺口卡片（打卡分享的核心视觉） -->
+    <view class="card hero-card">
+      <view class="hero-label">今日热量{{gap >= 0 ? '缺口' : '盈余'}}</view>
+      <view class="hero-num {{gap >= 0 ? 'gap' : 'surplus'}}">{{gap >= 0 ? gap : -gap}}</view>
+      <view class="hero-unit">kcal · {{profile.goalLabel}}目标</view>
+      <view class="verdict">{{verdict}}</view>
+    </view>
+
+    <!-- 三大营养素 -->
+    <view class="card">
+      <view class="card-title">三大营养素</view>
+      <view class="macros">
+        <view class="macro">
+          <view class="macro-num protein">{{totals.protein}}g</view>
+          <view class="macro-label">蛋白质</view>
+          <view class="macro-sub">{{proteinPerKg}} g/kg 体重</view>
+        </view>
+        <view class="macro">
+          <view class="macro-num">{{totals.carbs}}g</view>
+          <view class="macro-label">碳水</view>
+        </view>
+        <view class="macro">
+          <view class="macro-num">{{totals.fat}}g</view>
+          <view class="macro-label">脂肪</view>
+        </view>
+      </view>
+    </view>
+
+    <button class="btn-primary action" bindtap="onMakePoster">生成打卡海报</button>
+    <button class="btn-primary action plain" bindtap="onSubscribe">开启每日记录提醒</button>
+    <button class="btn-share action" open-type="share">分享给好友</button>
+  </block>
+
+  <block wx:else>
+    <view class="empty">还没有设置目标，回首页先设置吧</view>
+  </block>
+</view>
+
+<!-- 海报画布：离屏渲染，不可见 -->
+<canvas type="2d" id="posterCanvas" class="poster-canvas" />
